@@ -1,0 +1,54 @@
+
+<div>
+<form (ngSubmit)="onSubmit()" #myForm="ngForm">
+  <div class="form-group">
+    <label for="name">Full Name *</label>
+
+    <div class="flex-row">
+      <div class="flex-column">
+        <input type="text" class="form-control" id="firstName"
+        
+        required
+        [(ngModel)]="model.firstName" name="firstName"
+        #name="ngModel">
+        <div>
+        First Name
+        </div>
+      </div>
+
+      <div class="flex-column">
+        <input type="text" class="form-control" id="lastName"
+        required
+        [(ngModel)]="model.lastName" name="lastName"
+        #name="ngModel">
+        <div>
+          Last Name
+        </div>
+      </div>  
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">E-mail</label>
+    <input type="text" class="form-control" placeholder="Ex: email@yahoo.com" id="email"
+    required
+    [(ngModel)]="model.email" name="email"
+    #name="ngModel">
+    <div>
+      example@example.com
+    </div>
+  </div>
+
+
+  <button type="submit" class="btn btn-success" [disabled]="!myForm.form.valid">Submit</button>
+  <button type="button" class="btn btn-default" (click)="myForm.reset()">Clear Form</button>
+
+  <div class="overlay" *ngIf="popup">
+    <div class="popup">
+      <h2>{{showMessage()}}</h2>
+      <a class="close" (click)="popup = false">&times;</a>
+    </div>
+  </div>
+
+</form>
+</div>
